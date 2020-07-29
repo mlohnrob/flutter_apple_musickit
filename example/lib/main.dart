@@ -4,53 +4,20 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:apple_musickit/apple_musickit.dart';
 
-void main() => runApp(MyApp());
+import 'package:apple_musickit/apple_musickit.dart';
 
-class MyApp extends StatefulWidget {
+void main() => runApp(AppleMusicKitExample());
+
+class AppleMusicKitExample extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _AppleMusicKitExampleState createState() => _AppleMusicKitExampleState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await AppleMusickit.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
+class _AppleMusicKitExampleState extends State<AppleMusicKitExample> {
+  AppleMusicKit _musicKit = AppleMusicKit();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
-      ),
-    );
+    return null;
   }
 }
