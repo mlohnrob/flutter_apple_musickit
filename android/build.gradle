@@ -16,6 +16,9 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 
@@ -24,6 +27,12 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 28
 
+    packagingOptions {
+        exclude 'classes.jar'
+        exclude 'AndroidManifest.xml'
+        exclude 'R.txt'
+    }
+
     defaultConfig {
         minSdkVersion 16
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -31,4 +40,12 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation files('./libs/mediaplayback-release-1.1.1.aar')
 }
