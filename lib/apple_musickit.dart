@@ -52,6 +52,8 @@ class AppleMusicKit {
   Future<bool> get isLiveStream async {}
 
   // functions:
+
+  Future<bool> init() async {}
 }
 
 // classes:
